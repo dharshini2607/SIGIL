@@ -37,8 +37,11 @@ def seed():
             db_user.role = u.role
     db.commit()
     
-    print("Database seeded purely with validated mapped active users bounds.")
-    return
+    print("Database mapped active users.")
+
+    if db.query(Alert).first() is not None:
+        print("Alerts exist. Skipping seed.")
+        return
 
     events = []
     alerts = []
