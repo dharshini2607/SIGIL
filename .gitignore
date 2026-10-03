@@ -1,0 +1,19 @@
+# Frontend dependencies
+frontend/node_modules/
+frontend/dist/
+frontend/.npm/
+
+# Backend dependencies & python artifacts
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/*.db
+backend/.pytest_cache/
+backend/pytest_api.txt
+backend/pytest_assign.txt
+backend/pytest_notes.txt
+backend/error_trace*.txt
+
+# General
+.env
+.DS_Store

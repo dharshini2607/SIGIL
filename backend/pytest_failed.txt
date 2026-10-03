@@ -1,0 +1,50 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\Priya Dharshini\Downloads\SIGIL_SourceCode\backend\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Priya Dharshini\Downloads\SIGIL_SourceCode\backend
+plugins: anyio-4.15.1
+collecting ... collected 17 items / 3 errors
+
+=================================== ERRORS ====================================
+________________________ ERROR collecting test_log.txt ________________________
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\pathlib.py:1059: in read_text
+    return f.read()
+           ^^^^^^^^
+<frozen codecs>:322: in decode
+    ???
+E   UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+______________________ ERROR collecting test_output.txt _______________________
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\pathlib.py:1059: in read_text
+    return f.read()
+           ^^^^^^^^
+<frozen codecs>:322: in decode
+    ???
+E   UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+______________________ ERROR collecting test_results.txt ______________________
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\pathlib.py:1059: in read_text
+    return f.read()
+           ^^^^^^^^
+<frozen codecs>:322: in decode
+    ???
+E   UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+============================== warnings summary ===============================
+venv\Lib\site-packages\starlette\formparsers.py:12
+  C:\Users\Priya Dharshini\Downloads\SIGIL_SourceCode\backend\venv\Lib\site-packages\starlette\formparsers.py:12: PendingDeprecationWarning: Please use `import python_multipart` instead.
+    import multipart
+
+venv\Lib\site-packages\starlette\testclient.py:41
+  C:\Users\Priya Dharshini\Downloads\SIGIL_SourceCode\backend\venv\Lib\site-packages\starlette\testclient.py:41: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    [], typing.ContextManager[anyio.abc.BlockingPortal]
+
+venv\Lib\site-packages\pydantic\_internal\_config.py:284
+venv\Lib\site-packages\pydantic\_internal\_config.py:284
+  C:\Users\Priya Dharshini\Downloads\SIGIL_SourceCode\backend\venv\Lib\site-packages\pydantic\_internal\_config.py:284: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.7/migration/
+    warnings.warn(DEPRECATION_MESSAGE, DeprecationWarning)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+ERROR test_log.txt - UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff...
+ERROR test_output.txt - UnicodeDecodeError: 'utf-8' codec can't decode byte 0...
+ERROR test_results.txt - UnicodeDecodeError: 'utf-8' codec can't decode byte ...
+!!!!!!!!!!!!!!!!!!! Interrupted: 3 errors during collection !!!!!!!!!!!!!!!!!!!
+======================== 4 warnings, 3 errors in 3.13s ========================

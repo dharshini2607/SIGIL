@@ -1,0 +1,38 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.0.3, pluggy-1.6.0 -- C:\Users\Priya Dharshini\AppData\Local\Programs\Python\Python311\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Priya Dharshini\Downloads\SIGIL_SourceCode\backend
+plugins: anyio-4.13.0, langsmith-0.8.14, asyncio-1.4.0, cov-7.1.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 0 items / 1 error
+
+=================================== ERRORS ====================================
+____________________ ERROR collecting tests/test_notes.py _____________________
+ImportError while importing test module 'C:\Users\Priya Dharshini\Downloads\SIGIL_SourceCode\backend\tests\test_notes.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_notes.py:3: in <module>
+    from app.main import app
+app\main.py:5: in <module>
+    from app.api import alerts, events, entities, investigations, auth, users, notes
+app\api\investigations.py:1: in <module>
+    import google.generativeai as genai
+E   ModuleNotFoundError: No module named 'google.generativeai'
+============================== warnings summary ===============================
+app\core\config.py:4
+  C:\Users\Priya Dharshini\Downloads\SIGIL_SourceCode\backend\app\core\config.py:4: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    class Settings(BaseSettings):
+
+app\api\alerts.py:25
+  C:\Users\Priya Dharshini\Downloads\SIGIL_SourceCode\backend\app\api\alerts.py:25: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    class AlertResponse(BaseModel):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+ERROR tests/test_notes.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+======================== 2 warnings, 1 error in 1.33s =========================
+

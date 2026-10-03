@@ -1,0 +1,1 @@
+from app.db.session import SessionLocal; from app.models.user import User; db=SessionLocal(); print('ACTIVE ANALYSTS:', [u.username for u in db.query(User).filter(User.is_active == True, User.role != 'VIEWER').all()])  

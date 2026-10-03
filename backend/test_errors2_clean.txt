@@ -1,0 +1,77 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\Priya Dharshini\Downloads\SIGIL_SourceCode\backend\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Priya Dharshini\Downloads\SIGIL_SourceCode\backend
+plugins: anyio-4.15.1
+collecting ... collected 4 items
+
+tests/test_notes.py::test_analyst_can_create_and_read_note PASSED        [ 25%]
+tests/test_notes.py::test_viewer_cannot_create_note PASSED               [ 50%]
+tests/test_notes.py::test_analyst_cannot_edit_other_note FAILED          [ 75%]
+tests/test_notes.py::test_admin_can_edit_other_note FAILED               [100%]
+
+================================== FAILURES ===================================
+_____________________ test_analyst_cannot_edit_other_note _____________________
+
+    def test_analyst_cannot_edit_other_note():
+        setup_alert()
+        # Admin creates note
+>       admin_headers = get_auth_headers("admin", "admin123")
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_notes.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+username = 'admin', password = 'admin123'
+
+    def get_auth_headers(username, password):
+        response = client.post("/api/v1/auth/login", json={"username": username, "password": password})
+>       assert response.status_code == 200
+E       assert 401 == 200
+E        +  where 401 = <Response [401 Unauthorized]>.status_code
+
+tests\test_notes.py:15: AssertionError
+_______________________ test_admin_can_edit_other_note ________________________
+
+    def test_admin_can_edit_other_note():
+        setup_alert()
+        # Analyst creates note
+        analyst_headers = get_auth_headers("analyst", "analyst123")
+        res = client.post("/api/v1/notes/by-alert/ALT-001", json={"content": "Analyst observation"}, headers=analyst_headers)
+        note_id = res.json()["note_id"]
+    
+        # Admin edits Analyst's note
+>       admin_headers = get_auth_headers("admin", "admin123")
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_notes.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+username = 'admin', password = 'admin123'
+
+    def get_auth_headers(username, password):
+        response = client.post("/api/v1/auth/login", json={"username": username, "password": password})
+>       assert response.status_code == 200
+E       assert 401 == 200
+E        +  where 401 = <Response [401 Unauthorized]>.status_code
+
+tests\test_notes.py:15: AssertionError
+============================== warnings summary ===============================
+venv\Lib\site-packages\starlette\formparsers.py:12
+  C:\Users\Priya Dharshini\Downloads\SIGIL_SourceCode\backend\venv\Lib\site-packages\starlette\formparsers.py:12: PendingDeprecationWarning: Please use `import python_multipart` instead.
+    import multipart
+
+venv\Lib\site-packages\starlette\testclient.py:41
+  C:\Users\Priya Dharshini\Downloads\SIGIL_SourceCode\backend\venv\Lib\site-packages\starlette\testclient.py:41: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    [], typing.ContextManager[anyio.abc.BlockingPortal]
+
+venv\Lib\site-packages\pydantic\_internal\_config.py:284
+venv\Lib\site-packages\pydantic\_internal\_config.py:284
+  C:\Users\Priya Dharshini\Downloads\SIGIL_SourceCode\backend\venv\Lib\site-packages\pydantic\_internal\_config.py:284: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.7/migration/
+    warnings.warn(DEPRECATION_MESSAGE, DeprecationWarning)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_notes.py::test_analyst_cannot_edit_other_note - assert 401 ...
+FAILED tests/test_notes.py::test_admin_can_edit_other_note - assert 401 == 200
+=================== 2 failed, 2 passed, 4 warnings in 4.86s ===================

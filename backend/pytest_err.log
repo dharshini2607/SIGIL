@@ -1,0 +1,77 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\Priya Dharshini\Downloads\SIGIL_SourceCode\backend\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Priya Dharshini\Downloads\SIGIL_SourceCode\backend
+plugins: anyio-4.15.1
+collecting ... collected 5 items
+
+tests/test_assignments.py::test_role_based_assignment_lifecycle[analyst-analyst123-200] ERROR [ 20%]
+tests/test_assignments.py::test_role_based_assignment_lifecycle[senior-senior123-200] ERROR [ 40%]
+tests/test_assignments.py::test_role_based_assignment_lifecycle[admin-admin123-200] ERROR [ 60%]
+tests/test_assignments.py::test_role_based_assignment_lifecycle[viewer-viewer123-403] ERROR [ 80%]
+tests/test_assignments.py::test_viewer_access_denied_to_eligible_analysts_list FAILED [100%]
+
+=================================== ERRORS ====================================
+_ ERROR at setup of test_role_based_assignment_lifecycle[analyst-analyst123-200] _
+tests\test_assignments.py:16: in eligible_user_id
+    headers = get_auth_headers("admin", "admin123")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_assignments.py:10: in get_auth_headers
+    assert response.status_code == 200
+E   assert 422 == 200
+E    +  where 422 = <Response [422 Unprocessable Entity]>.status_code
+_ ERROR at setup of test_role_based_assignment_lifecycle[senior-senior123-200] _
+tests\test_assignments.py:16: in eligible_user_id
+    headers = get_auth_headers("admin", "admin123")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_assignments.py:10: in get_auth_headers
+    assert response.status_code == 200
+E   assert 422 == 200
+E    +  where 422 = <Response [422 Unprocessable Entity]>.status_code
+_ ERROR at setup of test_role_based_assignment_lifecycle[admin-admin123-200] __
+tests\test_assignments.py:16: in eligible_user_id
+    headers = get_auth_headers("admin", "admin123")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_assignments.py:10: in get_auth_headers
+    assert response.status_code == 200
+E   assert 422 == 200
+E    +  where 422 = <Response [422 Unprocessable Entity]>.status_code
+_ ERROR at setup of test_role_based_assignment_lifecycle[viewer-viewer123-403] _
+tests\test_assignments.py:16: in eligible_user_id
+    headers = get_auth_headers("admin", "admin123")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_assignments.py:10: in get_auth_headers
+    assert response.status_code == 200
+E   assert 422 == 200
+E    +  where 422 = <Response [422 Unprocessable Entity]>.status_code
+================================== FAILURES ===================================
+_____________ test_viewer_access_denied_to_eligible_analysts_list _____________
+tests\test_assignments.py:43: in test_viewer_access_denied_to_eligible_analysts_list
+    headers = get_auth_headers("viewer", "viewer123")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_assignments.py:10: in get_auth_headers
+    assert response.status_code == 200
+E   assert 422 == 200
+E    +  where 422 = <Response [422 Unprocessable Entity]>.status_code
+============================== warnings summary ===============================
+venv\Lib\site-packages\starlette\formparsers.py:12
+  C:\Users\Priya Dharshini\Downloads\SIGIL_SourceCode\backend\venv\Lib\site-packages\starlette\formparsers.py:12: PendingDeprecationWarning: Please use `import python_multipart` instead.
+    import multipart
+
+venv\Lib\site-packages\starlette\testclient.py:41
+  C:\Users\Priya Dharshini\Downloads\SIGIL_SourceCode\backend\venv\Lib\site-packages\starlette\testclient.py:41: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    [], typing.ContextManager[anyio.abc.BlockingPortal]
+
+venv\Lib\site-packages\pydantic\_internal\_config.py:284
+venv\Lib\site-packages\pydantic\_internal\_config.py:284
+  C:\Users\Priya Dharshini\Downloads\SIGIL_SourceCode\backend\venv\Lib\site-packages\pydantic\_internal\_config.py:284: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.7/migration/
+    warnings.warn(DEPRECATION_MESSAGE, DeprecationWarning)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_assignments.py::test_viewer_access_denied_to_eligible_analysts_list
+ERROR tests/test_assignments.py::test_role_based_assignment_lifecycle[analyst-analyst123-200]
+ERROR tests/test_assignments.py::test_role_based_assignment_lifecycle[senior-senior123-200]
+ERROR tests/test_assignments.py::test_role_based_assignment_lifecycle[admin-admin123-200]
+ERROR tests/test_assignments.py::test_role_based_assignment_lifecycle[viewer-viewer123-403]
+=================== 1 failed, 4 warnings, 4 errors in 3.47s ===================
